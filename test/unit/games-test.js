@@ -1,6 +1,6 @@
-var TwitchClient = require("../node-twitchtv")
+var TwitchClient = require("../../node-twitchtv")
   , should = require("should")
-  , account = require("./conf/example.json");
+  , account = require("../conf/example.json");
 
 describe("Games", function() {
   
