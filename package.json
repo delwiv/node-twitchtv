@@ -5,7 +5,8 @@
   "keywords": [],
   "author": "Jaime Bueza <jbueza@gmail.com>",
   "dependencies": {
-    "request": ">= 2.9.0"
+    "request": ">= 2.9.0",
+    "winston": "*"
   },
   "devDependencies": {
     "mocha": "*",

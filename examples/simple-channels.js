@@ -5,5 +5,8 @@ var client = new TwitchClient(account);
 
 client.channels({ channel: "nl_kripp"}, function(err, channel) {
     //best hunter US!
-  console.log(channel);
+  console.log(channel.name);
+  console.log(channel.game);  
+  console.log(channel.status);
+  
 });

@@ -1,4 +1,5 @@
-var request = require("request");
+var request = require("request")
+  , logger = require("winston");
 
 var twitch_url = "https://api.twitch.tv/kraken";
 
@@ -41,13 +42,14 @@ TwitchClient.prototype.games = function retrieveGames(params, callback) {
 
 TwitchClient.prototype.channels = function retrieveChannels(params, callback) {
   var self = this;
+  
+  if (typeof params.channel == 'undefined' || !params.channel) return false;
+  
   request({
-    url: twitch_url + "/channel",
-    query: params
+    url: twitch_url + "/channels/" + params.channel  
   }, function(err, request, response) {
     response = JSON.parse(response);
-    var channel = response;
-    if (callback) callback.call(self, null, channel);
+    if (callback) callback.call(self, null, response);
   });
 };
 

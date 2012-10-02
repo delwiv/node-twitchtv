@@ -22,8 +22,19 @@ client.games({ limit: 20, offset: 21}, function(err, games) {
 
 ## Retrieving a list of games
 
+```javascript
+client.games({ channel: "nl_kripp" }, function(err, channel) {
+  console.log(channel.info); // channel info/description
+});
+```
 
-## Retrieving a list of channels
+## Retrieving a channel's information
+
+```javascript
+client.channels({ channel: "nl_kripp" }, function(err, channel) {
+  console.log(channel.info); // channel info/description
+});
+```
 
 ## Retrieving a list of users
 
