@@ -36,9 +36,13 @@ client.channels({ channel: "nl_kripp" }, function(err, channel) {
 });
 ```
 
-## Retrieving a list of users
+## Retrieving a user's information
 
-
+```javascript
+client.users({ user: "nl_kripp" }, function(err, user) {
+  console.log(user.name); // user info!
+});
+```
 
 ## License 
 
