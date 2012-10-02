@@ -42,7 +42,7 @@ TwitchClient.prototype.games = function retrieveGames(params, callback) {
   
   request({
     url: twitch_url + "/games/top",
-    query: params
+    qs: params
   }, function(err, request, response) {
     response = JSON.parse(response);
     var games = response.top;

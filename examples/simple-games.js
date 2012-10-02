@@ -3,6 +3,6 @@ var TwitchClient = require("../node-twitchtv")
   
 var client = new TwitchClient(account);
 
-client.games({}, function(err, games) {
-  console.log(games);
+client.games({ limit: 30}, function(err, games) {
+  console.log(games.length);
 });
