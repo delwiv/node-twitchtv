@@ -2,16 +2,18 @@
   "name": "node-twitchtv",
   "version": "0.0.1",
   "description": "TwitchTV client for Node applications",
-  "keywords": [],
+  "keywords": ["twitchtv", "sdk"],
   "author": "Jaime Bueza <jbueza@gmail.com>",
   "contributors": [
-      { "name": "Jaime Bueza", "email": "jbueza@gmail.com" },
+    { "name": "Jaime Bueza", "email": "jbueza@gmail.com" }
   ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -t 30000 test/"
+  },
   "dependencies": {
     "request": ">= 2.9.0",
     "winston": "*"
   },
-  
   "devDependencies": {
     "mocha": "*",
     "should": "*"
