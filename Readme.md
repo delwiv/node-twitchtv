@@ -15,10 +15,19 @@ var account = require("../secrets/user.json");
 
 var client = new TwitchClient(account).auth();
   
-client.channels({}, function(err, response) {
-  
-})
+client.games({ limit: 20, offset: 21}, function(err, games) {
+  console.log(games);
+});
 ```
+
+## Retrieving a list of games
+
+
+## Retrieving a list of channels
+
+## Retrieving a list of users
+
+
 
 ## License 
 

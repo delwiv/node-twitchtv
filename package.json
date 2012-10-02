@@ -5,11 +5,11 @@
   "keywords": [],
   "author": "Jaime Bueza <jbueza@gmail.com>",
   "dependencies": {
-    "request": "*"
+    "request": ">= 2.9.0"
   },
   "devDependencies": {
     "mocha": "*",
     "should": "*"
   },
-  "main": "index"
+  "main": "./node-twitchtv.js"
 }
