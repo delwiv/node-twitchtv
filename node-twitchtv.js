@@ -21,17 +21,18 @@ TwitchClient.prototype.auth = function authenticate() {
   var url = "https://api.twitch.tv/kraken/oauth2/token";
 
   logger.warn("Still being implemented");
-  
+
   request.post({
     url: twitch_url + "/auth2/token",
-    json: {
+    form: {
       client_id: this.client_id,
       username: this.username,
       password: this.password,
       scope: this.scope
     }
-  }, function(err, request, response) {
-    console.log(response);
+  }, function(err, response, body) {
+    console.log(response.request);
+
   });
 };
 
@@ -43,10 +44,10 @@ TwitchClient.prototype.games = function retrieveGames(params, callback) {
   request.get({
     url: twitch_url + "/games/top",
     qs: params
-  }, function(err, request, response) {
-    response = JSON.parse(response);
-    var games = response.top;
-    if (callback) callback.call(self, null, games, response);
+  }, function(err, response, body) {
+    body = JSON.parse(body);
+    var games = body.top;
+    if (callback) callback.call(self, null, games, body);
   });
 };
 
@@ -58,9 +59,9 @@ TwitchClient.prototype.channels = function retrieveChannels(params, callback) {
 
   request.get({
     url: twitch_url + "/channels/" + params.channel
-  }, function(err, request, response) {
-    response = JSON.parse(response);
-    if (callback) callback.call(self, null, response);
+  }, function(err, response, body) {
+    body = JSON.parse(body);
+    if (callback) callback.call(self, null, body);
   });
 };
 
@@ -72,9 +73,9 @@ TwitchClient.prototype.users = function retrieveUserInformation(params, callback
   
   request.get({
     url: twitch_url + "/users/" + params.user
-  }, function(err, request, response) {
-    response = JSON.parse(response);
-    if (callback) callback.call(self, null, response);
+  }, function(err, response, body) {
+    body = JSON.parse(body);
+    if (callback) callback.call(self, null, body);
   });
 };
 
