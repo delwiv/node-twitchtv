@@ -20,7 +20,7 @@ var TwitchClient = require("node-twitchtv");
 
 var account = require("../secrets/user.json");
 
-var client = new TwitchClient(account).auth();
+var client = new TwitchClient(account);
   
 client.games({ limit: 20, offset: 21}, function(err, games) {
   console.log(games);
