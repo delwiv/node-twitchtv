@@ -1,0 +1,15 @@
+{
+  "name": "node-twitchtv",
+  "version": "0.0.1",
+  "description": "TwitchTV client for Node applications",
+  "keywords": [],
+  "author": "Jaime Bueza <jbueza@gmail.com>",
+  "dependencies": {
+    "request": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "main": "index"
+}
