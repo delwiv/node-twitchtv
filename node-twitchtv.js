@@ -20,7 +20,7 @@ TwitchClient = function(config) {
 
 TwitchClient.prototype.auth = function authenticate(config) {
 
-  logger.warn("Authorization gateway is still being implemented");
+  logger.warn("Authorization is still being implemented.");
 
   var params = _.extend({}, {
     client_id: this.client_id,
@@ -34,13 +34,7 @@ TwitchClient.prototype.auth = function authenticate(config) {
     url: twitch_url + "/oauth2/authorize",
     form: params
   }, function(err, response, body) {
-    console.log(body);
-    request.post({
-      url: twitch_url + "/oauth2/token",
-      form: params
-    }, function(e, r, b) {
-        console.log(b);
-    })
+
   });
 };
 
