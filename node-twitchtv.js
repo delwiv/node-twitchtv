@@ -4,10 +4,15 @@ var request = require("request"),
 var twitch_url = "https://api.twitch.tv/kraken";
 
 TwitchClient = function(config) {
-  this.client_id = config.client_id;
-  this.username = config.username;
-  this.password = config.password;
-  this.scope = config.scope;
+  try {
+    this.client_id = config.client_id;
+    this.username = config.username;
+    this.password = config.password;
+    this.scope = config.scope;
+    
+  } catch(err) {
+    logger.info("Please remember to set your client_id!");
+  }
 
   return this;
 };
