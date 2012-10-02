@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "request": ">= 2.9.0",
-    "winston": "*"
+    "winston": "*",
+    "underscore": "*"
   },
   "devDependencies": {
     "mocha": "*",

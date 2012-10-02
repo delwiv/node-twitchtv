@@ -53,7 +53,14 @@ client.users({ user: "nl_kripp" }, function(err, user) {
 
 ## Contributing
 
-100% open -- let's make this better! Accepting pull requests at any time. Still need to work on OAuth2 Authentication.
+100% open -- let's make this better! Accepting pull requests at any time.
+
+## TODO
+
+* OAuth2 authentication
+* Being able to update streams
+* Listing videos
+* Searching
 
 ## License 
 
