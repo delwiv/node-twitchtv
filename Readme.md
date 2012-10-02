@@ -22,7 +22,7 @@ var account = require("../secrets/user.json");
 
 var client = new TwitchClient(account);
   
-client.games({ limit: 20, offset: 21}, function(err, games) {
+client.games({ limit: 20, offset: 21 }, function(err, games) {
   console.log(games);
 });
 ```
