@@ -44,6 +44,10 @@ client.users({ user: "nl_kripp" }, function(err, user) {
 });
 ```
 
+## Contributing
+
+100% open -- let's make this better! Accepting pull requests at any time. Still need to work on authentication.
+
 ## License 
 
 (The MIT License)
