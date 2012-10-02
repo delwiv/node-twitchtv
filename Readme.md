@@ -7,9 +7,16 @@
 ## Getting started
 
 - Sign up for an application (need a client_id) at TwitchTV: http://www.twitch.tv/settings?section=applications
-- 
+
+```
+npm install node-twitchtv
+```
+
+Then integrate!
 
 ```javascript
+
+var TwitchClient = require("node-twitchtv");
 
 var account = require("../secrets/user.json");
 
