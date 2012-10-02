@@ -4,10 +4,14 @@
   "description": "TwitchTV client for Node applications",
   "keywords": [],
   "author": "Jaime Bueza <jbueza@gmail.com>",
+  "contributors": [
+      { "name": "Jaime Bueza", "email": "jbueza@gmail.com" },
+  ],
   "dependencies": {
     "request": ">= 2.9.0",
     "winston": "*"
   },
+  
   "devDependencies": {
     "mocha": "*",
     "should": "*"
