@@ -11,7 +11,7 @@ TwitchClient = function(config) {
     this.scope = config.scope;
     
   } catch(err) {
-    logger.info("Please remember to set your client_id!");
+    logger.warn("Please remember to set your client_id!");
   }
 
   return this;
