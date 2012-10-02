@@ -1,7 +1,6 @@
 var TwitchClient = require("../node-twitchtv")
   , should = require("should")
   , account = require("./conf/example.json");
-  
 
 describe("A lovely NodeJS based Twitch Client", function() {
   
@@ -49,4 +48,3 @@ describe("A lovely NodeJS based Twitch Client", function() {
     });
   });
 });
-

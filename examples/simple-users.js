@@ -4,8 +4,5 @@ var TwitchClient = require("../node-twitchtv")
 var client = new TwitchClient(account);
 
 client.users({ user: "nl_kripp"}, function(err, user) {
-  console.log(user.name);
-  console.log(user.game);  
-  console.log(user.status);
-  
+  console.log(user);
 });
