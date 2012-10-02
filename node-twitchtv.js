@@ -27,8 +27,6 @@ TwitchClient.prototype.auth = function authenticate() {
   })
 };
 
-
-
 TwitchClient.prototype.games = function retrieveGames(params, callback) {
   var self = this;
   request({
@@ -40,6 +38,19 @@ TwitchClient.prototype.games = function retrieveGames(params, callback) {
     if (callback) callback.call(self, null, games, response);
   });
 };
+
+TwitchClient.prototype.channels = function retrieveChannels(params, callback) {
+  var self = this;
+  request({
+    url: twitch_url + "/channel",
+    query: params
+  }, function(err, request, response) {
+    response = JSON.parse(response);
+    var channel = response;
+    if (callback) callback.call(self, null, channel);
+  });
+};
+
 
 /*
  *  var client = new TwitchClient({}).authenticate();
