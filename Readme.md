@@ -3,6 +3,8 @@
 
   TwitchTV client for Node applications.
   
+  ![Build Status](https://travis-ci.org/jbueza/node-twitchtv.png)
+  
   
 ## Getting started
 
