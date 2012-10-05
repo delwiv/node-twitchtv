@@ -20,6 +20,8 @@ Then integrate!
 
 var TwitchClient = require("node-twitchtv");
 
+// { client_id: "generatedClientId", scope: "user_read, channel_read_"}
+
 var account = require("../secrets/user.json");
 
 var client = new TwitchClient(account);
@@ -56,6 +58,12 @@ client.users({ user: "nl_kripp" }, function(err, user) {
 ## Contributing
 
 100% open -- let's make this better! Accepting pull requests at any time.
+
+### Running the tests
+
+```
+λ node-twitchtv (master): npm test
+```
 
 ## TODO
 
