@@ -3,6 +3,9 @@
 This directory is an example application built with NodeJS and Express to render out
 a number of games with game covers.
 
+![Screenshot of the app](ScreenShot.png)
+
+
 ### Install module dependencies
 
 ```
