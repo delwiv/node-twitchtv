@@ -7,7 +7,7 @@ var client = new TwitchClient();
  */
 
 exports.index = function(req, res){
-  
+  // bam! it's that easy to integrate!
   client.games({ limit: 20 }, function(err, games) {
     res.render('index', { title: 'Twitch Express Games List', games: games });
   });
