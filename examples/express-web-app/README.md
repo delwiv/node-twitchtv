@@ -21,13 +21,34 @@ node app.js
 [View it on localohost](http://localhost:3000)
 
 
-## Running on Heroku
+## Deployment on Heroku?
 
-Add a Procfile to the root of your application:
+No problem! Add a Procfile to the root of your application:
 
 ```
 web: node app.js
 ```
+
+Then push to heroku!
+
+```
+git push heroku master
+```
+
+## Depoyment on Windows Azure?
+
+No problem! Ensure that when you create a new Windows Azure Website, add the "azure" remote!
+
+```
+git remote add azure GENERATED_FROM_AZURE
+```
+
+Then push to Azure (remember to put in your credentials)!
+
+```
+git push azure master
+```
+
 
 ## Questions?
 
