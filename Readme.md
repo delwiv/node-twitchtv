@@ -57,12 +57,12 @@ client.users({ user: "nl_kripp" }, function(err, user) {
 
 ## Contributing
 
-100% open -- let's make this better! Accepting pull requests at any time.
+100% open -- let's make this better! Accepting pull requests at any time. 
 
 ### Running the tests
 
 ```
-λ node-twitchtv (master): npm test
+npm test
 ```
 
 ## TODO
