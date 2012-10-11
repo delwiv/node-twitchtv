@@ -15,6 +15,8 @@ npm install
 node app.js
 ```
 
+[View it on localohost](http://localhost:3000)
+
 
 ## Running on Heroku
 
@@ -24,3 +26,6 @@ Add a Procfile to the root of your application:
 web: node app.js
 ```
 
+## Questions?
+
+[Feel free to reach out!](mailto:jbueza@gmail.com?subject=TwitchTV NodeJS Client)
