@@ -1,2 +1,15 @@
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+
+
+<section id="mainContent" class="example">
+
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  
+  <ul class="block-grid four-up games">
+    <% games.forEach(function(item){ %>
+      <% include partials/game %>
+    <% }) %>
+  </ul>   
+</section>
+
+
