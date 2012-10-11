@@ -71,8 +71,8 @@ npm test
 * Video Streaming
 * Being able to update channel information
 * Listing videos
-* Pushing streams
 * Searching
+* Analytics?
 
 ## License 
 
