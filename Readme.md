@@ -68,10 +68,11 @@ client.users({ user: "nl_kripp" }, function(err, user) {
 ## TODO
 
 * OAuth2 authentication 
+* Video Streaming
 * Being able to update channel information
 * Listing videos
-* Searching
 * Pushing streams
+* Searching
 
 ## License 
 
