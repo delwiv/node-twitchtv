@@ -1,7 +1,7 @@
 
 # node-twitchtv
 
-  TwitchTV client for Node applications.
+  TwitchTV client for NodeJS applications.
   
   ![Build Status](https://travis-ci.org/jbueza/node-twitchtv.png)
   
@@ -33,7 +33,7 @@ client.games({ limit: 20, offset: 21 }, function(err, games) {
 
 ## Retrieving a list of games
 
-```javascript
+```js
 client.games({ channel: "nl_kripp" }, function(err, channel) {
   console.log(channel.info); // channel info/description
 });
@@ -41,7 +41,7 @@ client.games({ channel: "nl_kripp" }, function(err, channel) {
 
 ## Retrieving a channel's information
 
-```javascript
+```js
 client.channels({ channel: "nl_kripp" }, function(err, channel) {
   console.log(channel.info); // channel info/description
 });
@@ -49,7 +49,7 @@ client.channels({ channel: "nl_kripp" }, function(err, channel) {
 
 ## Retrieving a user's information
 
-```javascript
+```js
 client.users({ user: "nl_kripp" }, function(err, user) {
   console.log(user.name); // user info!
 });
