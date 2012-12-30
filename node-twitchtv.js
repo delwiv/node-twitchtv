@@ -67,6 +67,21 @@ TwitchClient.prototype.channels = function retrieveChannels(params, callback) {
   });
 };
 
+TwitchClient.prototype.streams = function retrieveStreams(params, callback) {
+  if (!callback || typeof callback != 'function') return false;
+  if (typeof params.stream == 'undefined' || !params.stream) return false;
+
+  var self = this;
+
+  request.get({
+    url: twitch_url + "/streams/" + params.stream
+  }, function(err, response, body) {
+    body = JSON.parse(body);
+    if (callback) callback.call(self, null, body);
+  });
+};
+
+
 TwitchClient.prototype.users = function retrieveUserInformation(params, callback) {
   if (!callback || typeof callback != 'function') return false;
   if (typeof params.user == 'undefined' || !params.user) return false;
