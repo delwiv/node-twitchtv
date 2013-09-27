@@ -67,20 +67,33 @@ TwitchClient.prototype.channels = function retrieveChannels(params, callback) {
   });
 };
 
-TwitchClient.prototype.streams = function retrieveStreams(params, callback) {
+TwitchClient.prototype.streams = function retrieveChannels(params, callback) {
   if (!callback || typeof callback != 'function') return false;
-  if (typeof params.stream == 'undefined' || !params.stream) return false;
+  if (typeof params.channel == 'undefined' || !params.channel) return false;
 
   var self = this;
 
   request.get({
-    url: twitch_url + "/streams/" + params.stream
+    url: twitch_url + "/streams/" + params.channel
   }, function(err, response, body) {
     body = JSON.parse(body);
     if (callback) callback.call(self, null, body);
   });
 };
 
+TwitchClient.prototype.videos = function retrieveChannels(params, callback) {
+  if (!callback || typeof callback != 'function') return false;
+  if (typeof params.channel == 'undefined' || !params.channel) return false;
+
+  var self = this;
+
+  request.get({
+    url: twitch_url + "/channels/" + params.channel + "/videos"
+  }, function(err, response, body) {
+    body = JSON.parse(body);
+    if (callback) callback.call(self, null, body);
+  });
+};
 
 TwitchClient.prototype.users = function retrieveUserInformation(params, callback) {
   if (!callback || typeof callback != 'function') return false;
