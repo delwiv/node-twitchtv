@@ -31,7 +31,7 @@ client.games({ limit: 20, offset: 21 }, function(err, response) {
 });
 ```
 
-### Retrieving a list of games
+#### Retrieving a list of games
 
 ```js
 client.games({ channel: "nl_kripp" }, function(err, response) {
@@ -39,7 +39,7 @@ client.games({ channel: "nl_kripp" }, function(err, response) {
 });
 ```
 
-### Retrieving a channel's information
+#### Retrieving a channel's information
 
 ```js
 client.channels({ channel: "nl_kripp" }, function(err, response) {
@@ -47,7 +47,7 @@ client.channels({ channel: "nl_kripp" }, function(err, response) {
 });
 ```
 
-### Retrieving a stream's information
+#### Retrieving a stream's information
 
 ```js
 client.streams({ channel: "nl_kripp" }, function(err, response) {
@@ -55,7 +55,7 @@ client.streams({ channel: "nl_kripp" }, function(err, response) {
 });
 ```
 
-### Retrieving a user's information
+#### Retrieving a user's information
 
 ```js
 client.users({ user: "nl_kripp" }, function(err, response) {
