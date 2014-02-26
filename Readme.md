@@ -5,6 +5,7 @@
   
   ![Build Status](https://travis-ci.org/jbueza/node-twitchtv.png)
   
+  [![NPM version](https://badge.fury.io/js/node-twitchtv.png)](http://badge.fury.io/js/node-twitchtv)
   
 ## Getting started
 
