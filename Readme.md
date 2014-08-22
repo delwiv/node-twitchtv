@@ -70,7 +70,8 @@ client.users({ user: "nl_kripp" }, function(err, response) {
 
 ### Contributors
 
-- Jim Hollingsworth (@jahollingsworth)
+- Jim Hollingsworth ([@jahollingsworth](http://github.com/jahollingsworth))
+- Peer Rails ([@PeerRails](http://github.com/PeerRails))
 
 ### Running the tests
 
