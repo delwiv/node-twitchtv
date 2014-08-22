@@ -68,6 +68,10 @@ client.users({ user: "nl_kripp" }, function(err, response) {
 
 100% open -- let's make this better! Accepting pull requests at any time. 
 
+### Contributors
+
+- Jim Hollingsworth (@jahollingsworth)
+
 ### Running the tests
 
 ```
