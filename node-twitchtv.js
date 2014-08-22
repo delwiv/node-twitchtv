@@ -3,6 +3,7 @@ var request = require("request"),
      logger = require("winston");
 
 var twitch_url = "https://api.twitch.tv/kraken";
+var twitch_api_url = "http://api.twitch.tv/api";
 
 TwitchClient = function(config) {
   try {
@@ -103,6 +104,20 @@ TwitchClient.prototype.users = function retrieveUserInformation(params, callback
 
   request.get({
     url: twitch_url + "/users/" + params.user
+  }, function(err, response, body) {
+    body = JSON.parse(body);
+    if (callback) callback.call(self, null, body);
+  });
+};
+
+TwitchClient.prototype.channelinfo = function retrieveChannelInformation(params, callback) {
+  if (!callback || typeof callback != 'function') return false;
+  if (typeof params.channel == 'undefined' || !params.channel) return false;
+
+  var self = this;
+
+  request.get({
+    url: twitch_api_url + "/channels/" + params.channel + "/panels"
   }, function(err, response, body) {
     body = JSON.parse(body);
     if (callback) callback.call(self, null, body);
