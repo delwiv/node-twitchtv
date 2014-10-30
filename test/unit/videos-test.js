@@ -2,7 +2,7 @@ var TwitchClient = require("../../node-twitchtv")
   , should = require("should")
   , account = require("../conf/example.json");
 
-describe("Streams", function() {
+describe("Videos", function() {
   
   var client = new TwitchClient(account);
   
