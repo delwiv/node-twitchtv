@@ -1,6 +1,6 @@
 var request = require("request"),
     _ = require("underscore")
-     logger = require("winston");
+    logger = require("winston");
 
 var twitch_url = "https://api.twitch.tv/kraken";
 var twitch_api_url = "http://api.twitch.tv/api";
@@ -55,73 +55,47 @@ TwitchClient.prototype.games = function retrieveGames(params, callback) {
 };
 
 TwitchClient.prototype.channels = function retrieveChannels(params, callback) {
-  if (!callback || typeof callback != 'function') return false;
   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-  var self = this;
-
-  request.get({
-    url: twitch_url + "/channels/" + params.channel
-  }, function(err, response, body) {
-    body = JSON.parse(body);
-    if (callback) callback.call(self, null, body);
-  });
+  return retrieveResource(twitch_url + "/channels/" + params.channel, callback);
 };
 
 TwitchClient.prototype.streams = function retrieveChannels(params, callback) {
-  if (!callback || typeof callback != 'function') return false;
   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-  var self = this;
-
-  request.get({
-    url: twitch_url + "/streams/" + params.channel
-  }, function(err, response, body) {
-    body = JSON.parse(body);
-    if (callback) callback.call(self, null, body);
-  });
+  return retrieveResource(twitch_url + "/streams/" + params.channel, callback);
 };
 
 TwitchClient.prototype.videos = function retrieveChannels(params, callback) {
-  if (!callback || typeof callback != 'function') return false;
   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-  var self = this;
-
-  request.get({
-    url: twitch_url + "/channels/" + params.channel + "/videos"
-  }, function(err, response, body) {
-    body = JSON.parse(body);
-    if (callback) callback.call(self, null, body);
-  });
+  return retrieveResource(twitch_url + "/channels/" + params.channel + "/videos", callback);
 };
 
 TwitchClient.prototype.users = function retrieveUserInformation(params, callback) {
-  if (!callback || typeof callback != 'function') return false;
   if (typeof params.user == 'undefined' || !params.user) return false;
 
-  var self = this;
-
-  request.get({
-    url: twitch_url + "/users/" + params.user
-  }, function(err, response, body) {
-    body = JSON.parse(body);
-    if (callback) callback.call(self, null, body);
-  });
+  return retrieveResource(twitch_url + "/users/" + params.user, callback);
 };
 
 TwitchClient.prototype.channelinfo = function retrieveChannelInformation(params, callback) {
-  if (!callback || typeof callback != 'function') return false;
   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-  var self = this;
-
-  request.get({
-    url: twitch_api_url + "/channels/" + params.channel + "/panels"
-  }, function(err, response, body) {
-    body = JSON.parse(body);
-    if (callback) callback.call(self, null, body);
-  });
+  return retrieveResource(twitch_api_url + "/channels/" + params.channel + "/panels", callback);
 };
+
+function retrieveResource(url, callback) {
+    if (url == 'undefined' || !url) return false;
+    if (!callback || typeof callback != 'function') return false;
+
+    var self = this;
+
+    request.get({
+        url: url
+    }, function(err, response, body) {
+        body = JSON.parse(body);
+        if (callback) callback.call(self, null, body);
+    });
+}
 
 module.exports = TwitchClient;
