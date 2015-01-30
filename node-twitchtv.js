@@ -84,6 +84,12 @@ TwitchClient.prototype.channelinfo = function retrieveChannelInformation(params,
   return retrieveResource(twitch_api_url + "/channels/" + params.channel + "/panels", callback);
 };
 
+TwitchClient.prototype.follows = function retrieveFollowerInformations(params, callback) {
+    if (typeof params.channel == 'undefined' || !params.channel) return false;
+
+    return retrieveResource(twitch_url + "/channels/" + params.channel + "/follows", callback);
+};
+
 function retrieveResource(url, callback) {
     if (url == 'undefined' || !url) return false;
     if (!callback || typeof callback != 'function') return false;
