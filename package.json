@@ -6,7 +6,8 @@
   "author": "Jaime Bueza <jbueza@gmail.com>",
   "contributors": [
     { "name": "Jaime Bueza", "email": "jbueza@gmail.com" },
-    { "name": "Peer Rails", "email": "homuthesun@gmail.com" }
+    { "name": "Peer Rails", "email": "homuthesun@gmail.com" },
+    { "name": "Dylan Jennings", "email": "dylan@dt.net.nz" }
   ],
   "scripts": {
     "test": "./node_modules/.bin/mocha -t 10000 test/integration test/unit"
