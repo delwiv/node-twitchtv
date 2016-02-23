@@ -100,7 +100,7 @@ function retrieveResource(url, callback) {
         url: url
     }, function(err, response, body) {
         body = JSON.parse(body);
-        if (callback) callback.call(self, null, body);
+        if (callback) callback.call(self, err, body);
     });
 }
 
