@@ -7,7 +7,7 @@
     "sdk"
   ],
   "author": "Jaime Bueza <jbueza@gmail.com>",
-  "main": "dist/twitchtv.js",
+  "main": "lib/twitchtv.js",
   "contributors": [
     {
       "name": "Jaime Bueza",
