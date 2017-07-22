@@ -2,11 +2,11 @@
 # node-twitchtv
 
   TwitchTV client for NodeJS applications.
-  
+
   ![Build Status](https://travis-ci.org/jbueza/node-twitchtv.png)
-  
+
   [![NPM version](https://badge.fury.io/js/node-twitchtv.png)](http://badge.fury.io/js/node-twitchtv)
-  
+
 ## Getting started
 
 - Sign up for an application (need a client_id) at TwitchTV: http://www.twitch.tv/settings?section=applications
@@ -21,12 +21,12 @@ Then integrate!
 
 var TwitchClient = require("node-twitchtv");
 
-// { client_id: "generatedClientId", scope: "user_read, channel_read_"}
+// { client_id: "generatedclient_id", scope: "user_read, channel_read_"}
 
 var account = require("../secrets/user.json");
 
 var client = new TwitchClient(account);
-  
+
 client.games({ limit: 20, offset: 21 }, function(err, response) {
   console.log(games);
 });
@@ -66,7 +66,7 @@ client.users({ user: "nl_kripp" }, function(err, response) {
 
 ## Contributing
 
-100% open -- let's make this better! Accepting pull requests at any time. 
+100% open -- let's make this better! Accepting pull requests at any time.
 
 ### Contributors
 
@@ -81,14 +81,14 @@ npm test
 
 ## TODO
 
-* OAuth2 authentication 
+* OAuth2 authentication
 * Video Streaming
 * Being able to update channel information
 * Listing videos
 * Searching
 * Analytics?
 
-## License 
+## License
 
 (The MIT License)
 

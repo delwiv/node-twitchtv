@@ -23,31 +23,48 @@
     }
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha -t 10000 test/integration test/unit",
+    "test": "yarn run build && jest __test__",
     "build": "babel src -d lib"
   },
   "dependencies": {
+    "node-request": "^0.0.3",
+    "ramda": "^0.24.1",
     "request": ">= 2.9.0",
+    "request-promise": "^4.2.1",
     "underscore": "*",
     "winston": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "jest": "^20.0.4",
     "mocha": "*",
+    "regenerator-runtime": "^0.10.5",
     "should": "*"
   },
   "babel": {
     "plugins": [
-      "syntax-dynamic-import"
+      "syntax-dynamic-import",
+      "transform-runtime"
     ],
     "presets": [
       "stage-1",
       "es2017",
       "env"
     ]
+  },
+  "jest": {
+    "transform": {
+      "__test__": "babel-jest"
+    }
   }
 }

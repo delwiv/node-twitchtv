@@ -1,101 +1,93 @@
-import request from 'request';
+// import requestP from 'request-promise';
+import request from 'request-promise';
+import querystring from 'querystring';
 import { merge } from 'ramda';
 import logger from 'winston';
 
 const TWITCH_URL = 'https://api.twitch.tv/kraken';
 const TWITCH_API_URL = 'http://api.twitch.tv/api';
 
-const REQUIRED_FIELDS = ['clientId', 'username', 'password', 'scope'];
-
-const retrieveResource = (url, callback) => {
-  if (url == 'undefined' || !url) return false;
-  if (!callback || typeof callback != 'function') return false;
-
-  var self = this;
-
-  request.get({
-    url: url
-  }, function(err, response, body) {
-    body = JSON.parse(body);
-    if (callback) callback.call(self, err, body);
-  });
-};
+const REQUIRED_FIELDS = ['client_id', 'username', 'password', 'scope'];
 
 export default class TwitchClient {
   constructor(config = {}) {
+    if (!config.client_id)
+      config.client_id = process.env.TWITCH_CLIENT_ID
     REQUIRED_FIELDS.forEach(field => !config[field] && logger.warn(`${field} is required`));
-    merge(this, config);
-
+    Object.assign(this, config);
 
     return this;
   }
 
-  auth(config) {
-    logger.warn('Authorization is still being implemented.');
-    const params = merge({}, {
-      client_id: this.clientId,
-      username: this.username,
-      password: this.password,
-      scope: this.scope,
-      response_type: "token"
-    }, config);
-
-    request.post({
-      url: TWITCH_URL + "/oauth2/authorize",
-      form: params
-    }, function(err, response, body) {
-      console.log({err, response, body});
-    });
-  }
-
-  games(params, callback) {
+  retrieveResource(url, callback) {
+    if (url == 'undefined' || !url) return false;
     if (!callback || typeof callback != 'function') return false;
 
-    var self = this;
-
     request.get({
-      url: twitch_url + "/games/top",
-      qs: params
+      url: `${url}?${this.client_id}`
     }, function(err, response, body) {
       body = JSON.parse(body);
-      var games = body.top;
-      if (callback) callback.call(self, null, games, body);
+      if (callback) callback.call(this, err, body);
     });
+  };
+
+  getAuthUrl(config) {
+    const params = {
+      client_id: this.client_id,
+      scope: this.scope,
+      response_type: 'code',
+      ...config
+    };
+
+    return `${TWITCH_URL}/oauth2/authorize?${querystring.stringify(params)}`
   }
 
-  channels(params, callback) {
-    if (typeof params.channel == 'undefined' || !params.channel) return false;
+  // games(params, callback) {
+  //   if (!callback || typeof callback != 'function') return false;
 
-    return retrieveResource(twitch_url + "/channels/" + params.channel, callback);
-  }
+  //   request.get({
+  //     url: TWITCH_URL + "/games/top?" + this.client_id,
+  //     qs: params
+  //   }, function(err, response, body) {
+  //     body = JSON.parse(body);
+  //     var games = body.top;
+  //     if (callback) callback.call(this, null, games, body);
+  //   });
+  // }
 
-  streams(params, callback) {
-    if (typeof params.channel == 'undefined' || !params.channel) return false;
+  // channels(params, callback) {
+  //   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-    return retrieveResource(twitch_url + "/streams/" + params.channel, callback);
-  }
+  //   return this.retrieveResource(TWITCH_URL + "/channels/" + params.channel, callback);
+  // }
 
-  videos(params, callback) {
-    if (typeof params.channel == 'undefined' || !params.channel) return false;
+  // streams(params, callback) {
+  //   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-    return retrieveResource(twitch_url + "/channels/" + params.channel + "/videos", callback);
-  }
+  //   return this.retrieveResource(TWITCH_URL + "/streams/" + params.channel, callback);
+  // }
 
-  users(params, callback) {
-    if (typeof params.user == 'undefined' || !params.user) return false;
+  // videos(params, callback) {
+  //   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-    return retrieveResource(twitch_url + "/users/" + params.user, callback);
-  }
+  //   return this.retrieveResource(TWITCH_URL + "/channels/" + params.channel + "/videos", callback);
+  // }
 
-  channelinfo(params, callback) {
-    if (typeof params.channel == 'undefined' || !params.channel) return false;
+  // users(params, callback) {
+  //   if (typeof params.user == 'undefined' || !params.user) return false;
 
-    return retrieveResource(twitch_api_url + "/channels/" + params.channel + "/panels", callback);
-  }
+  //   return this.retrieveResource(TWITCH_URL + "/users/" + params.user, callback);
+  // }
 
-  follows(params, callback) {
-      if (typeof params.channel == 'undefined' || !params.channel) return false;
+  // channelinfo(params, callback) {
+  //   if (typeof params.channel == 'undefined' || !params.channel) return false;
 
-      return retrieveResource(twitch_url + "/channels/" + params.channel + "/follows", callback);
-  }
+  //   return this.retrieveResource(TWITCH_API_URL + "/channels/" + params.channel + "/panels", callback);
+  // }
+
+  // follows(params, callback) {
+  //     if (typeof params.channel == 'undefined' || !params.channel) return false;
+
+  //     return this.retrieveResource(TWITCH_URL + "/channels/" + params.channel + "/follows", callback);
+  // }
 }
