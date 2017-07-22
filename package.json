@@ -2,24 +2,52 @@
   "name": "node-twitchtv",
   "version": "0.0.4",
   "description": "TwitchTV client for Node applications",
-  "keywords": ["twitchtv", "sdk"],
+  "keywords": [
+    "twitchtv",
+    "sdk"
+  ],
   "author": "Jaime Bueza <jbueza@gmail.com>",
+  "main": "dist/twitchtv.js",
   "contributors": [
-    { "name": "Jaime Bueza", "email": "jbueza@gmail.com" },
-    { "name": "Peer Rails", "email": "homuthesun@gmail.com" },
-    { "name": "Dylan Jennings", "email": "dylan@dt.net.nz" }
+    {
+      "name": "Jaime Bueza",
+      "email": "jbueza@gmail.com"
+    },
+    {
+      "name": "Peer Rails",
+      "email": "homuthesun@gmail.com"
+    },
+    {
+      "name": "Dylan Jennings",
+      "email": "dylan@dt.net.nz"
+    }
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha -t 10000 test/integration test/unit"
+    "test": "./node_modules/.bin/mocha -t 10000 test/integration test/unit",
+    "build": "babel src -d lib"
   },
   "dependencies": {
     "request": ">= 2.9.0",
-    "winston": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "winston": "*"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
     "mocha": "*",
     "should": "*"
   },
-  "main": "./node-twitchtv.js"
+  "babel": {
+    "plugins": [
+      "syntax-dynamic-import"
+    ],
+    "presets": [
+      "stage-1",
+      "es2017",
+      "env"
+    ]
+  }
 }
