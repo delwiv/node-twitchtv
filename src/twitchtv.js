@@ -41,7 +41,7 @@ export default class TwitchClient {
 
   getAuthUrl(config) {
     const uri = `${TWITCH_URL}/oauth2/authorize?${querystring.stringify({
-      this.getParams(config),
+      ...this.getParams(config),
       response_type: 'code'
     })}`;
 
@@ -51,7 +51,7 @@ export default class TwitchClient {
 
   verify(config) {
     const uri = `${TWITCH_API_URL}/oauth2/token?${querystring.stringify({
-      this.getParams(config),
+      ...this.getParams(config),
       response_type: 'code'
     })}`;
     return requestP.post(uri)
