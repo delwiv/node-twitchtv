@@ -46,7 +46,19 @@ export default class TwitchClient {
     })}`;
     // console.log({uri})
     return requestP.post(uri)
+  }
 
+  getUser(accessToken) {
+    const uri = `${TWITCH_URL}/user`;
+    // console.log({uri})
+    return requestP.get({
+      uri,
+      headers: {
+        'Client-ID': this.clientId,
+        'Accept': 'application/vnd.twitchtv.v5+json',
+        'Authorization': `OAuth ${accessToken}`
+      }
+    })
   }
 
   // games(params, callback) {
