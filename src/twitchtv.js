@@ -22,7 +22,8 @@ export default class TwitchClient {
 
   getParams(config) {
     return REQUIRED_FIELDS.reduce((acc, field) => {
-      acc[snake(field)] = config[field] || this[field];
+      if (config[field] || this[field])
+        acc[snake(field)] = config[field] || this[field];
       return acc;
     }, {});
   }
@@ -54,6 +55,7 @@ export default class TwitchClient {
       ...this.getParams(config),
       response_type: 'code'
     })}`;
+    console.log({uri})
     return requestP.post(uri)
 
   }

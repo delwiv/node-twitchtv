@@ -32,7 +32,6 @@
     "request": ">= 2.9.0",
     "request-promise": "^4.2.1",
     "snake-case": "^2.1.0",
-    "underscore": "*",
     "winston": "*"
   },
   "devDependencies": {
@@ -48,9 +47,7 @@
     "eslint-config-airbnb": "^15.0.2",
     "eslint-plugin-import": "^2.7.0",
     "jest": "^20.0.4",
-    "mocha": "*",
-    "regenerator-runtime": "^0.10.5",
-    "should": "*"
+    "regenerator-runtime": "^0.10.5"
   },
   "babel": {
     "plugins": [
