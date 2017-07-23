@@ -29,25 +29,13 @@ export default class TwitchClient {
     }, {});
   }
 
-  retrieveResource(url, callback) {
-    if (url == 'undefined' || !url) return false;
-    if (!callback || typeof callback != 'function') return false;
-
-    request.get({
-      url: `${url}?${this.clientId}`
-    }, function(err, response, body) {
-      body = JSON.parse(body);
-      if (callback) callback.call(this, err, body);
-    });
-  };
-
   getAuthUrl(config) {
     const uri = `${TWITCH_URL}/oauth2/authorize?${querystring.stringify({
       ...this.getParams(config),
       response_type: 'code'
     })}`;
 
-    console.log({uri})
+    // console.log({uri})
     return uri;
   }
 
@@ -56,7 +44,7 @@ export default class TwitchClient {
       ...this.getParams(config),
       response_type: 'code'
     })}`;
-    console.log({uri})
+    // console.log({uri})
     return requestP.post(uri)
 
   }
