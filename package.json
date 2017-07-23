@@ -1,6 +1,6 @@
 {
   "name": "node-twitchtv",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TwitchTV client for Node applications",
   "keywords": [
     "twitchtv",
