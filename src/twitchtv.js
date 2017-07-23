@@ -1,22 +1,30 @@
-// import requestP from 'request-promise';
+import requestP from 'request-promise';
 import request from 'request-promise';
 import querystring from 'querystring';
 import { merge } from 'ramda';
 import logger from 'winston';
+import toSnake from 'param-case';
 
 const TWITCH_URL = 'https://api.twitch.tv/kraken';
 const TWITCH_API_URL = 'http://api.twitch.tv/api';
 
-const REQUIRED_FIELDS = ['client_id', 'username', 'password', 'scope'];
+const REQUIRED_FIELDS = ['clientId', 'clientSecret', 'redirectUri', 'scope'];
 
 export default class TwitchClient {
   constructor(config = {}) {
-    if (!config.client_id)
-      config.client_id = process.env.TWITCH_CLIENT_ID
+    if (!config.clientId)
+      config.clientId = process.env.TWITCH_CLIENT_ID
     REQUIRED_FIELDS.forEach(field => !config[field] && logger.warn(`${field} is required`));
     Object.assign(this, config);
 
     return this;
+  }
+
+  getParams(config) {
+    return REQUIRED_FIELDS.reduce((acc, field) => {
+      acc[toSnake(field)] = config[field] || this[field];
+      return acc;
+    }, {});
   }
 
   retrieveResource(url, callback) {
@@ -24,7 +32,7 @@ export default class TwitchClient {
     if (!callback || typeof callback != 'function') return false;
 
     request.get({
-      url: `${url}?${this.client_id}`
+      url: `${url}?${this.clientId}`
     }, function(err, response, body) {
       body = JSON.parse(body);
       if (callback) callback.call(this, err, body);
@@ -32,14 +40,22 @@ export default class TwitchClient {
   };
 
   getAuthUrl(config) {
-    const params = {
-      client_id: this.client_id,
-      scope: this.scope,
-      response_type: 'code',
-      ...config
-    };
+    const uri = `${TWITCH_URL}/oauth2/authorize?${querystring.stringify({
+      this.getParams(config),
+      response_type: 'code'
+    })}`;
 
-    return `${TWITCH_URL}/oauth2/authorize?${querystring.stringify(params)}`
+    console.log({uri})
+    return uri;
+  }
+
+  verify(config) {
+    const uri = `${TWITCH_API_URL}/oauth2/token`
+    return requestP.post(uri, {
+      this.getParams(config),
+      response_type: 'code'
+    })
+
   }
 
   // games(params, callback) {
