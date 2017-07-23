@@ -1,12 +1,12 @@
 import requestP from 'request-promise';
 import request from 'request-promise';
 import querystring from 'querystring';
-import { merge } from 'ramda';
+import { merge, uniq } from 'ramda';
 import logger from 'winston';
 import snake from 'snake-case';
 
 const TWITCH_URL = 'https://api.twitch.tv/kraken';
-const TWITCH_API_URL = 'http://api.twitch.tv/api';
+const TWITCH_API_URL = 'https://api.twitch.tv/api';
 
 const REQUIRED_FIELDS = ['clientId', 'clientSecret', 'redirectUri', 'scope'];
 
@@ -21,7 +21,8 @@ export default class TwitchClient {
   }
 
   getParams(config) {
-    return REQUIRED_FIELDS.reduce((acc, field) => {
+    return uniq(REQUIRED_FIELDS.concat(Object.keys(config)))
+    .reduce((acc, field) => {
       if (config[field] || this[field])
         acc[snake(field)] = config[field] || this[field];
       return acc;
