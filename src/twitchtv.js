@@ -50,7 +50,6 @@ export default class TwitchClient {
 
   getUser(accessToken) {
     const uri = `${TWITCH_URL}/user`;
-    // console.log({uri})
     return requestP.get({
       uri,
       headers: {
@@ -58,7 +57,7 @@ export default class TwitchClient {
         'Accept': 'application/vnd.twitchtv.v5+json',
         'Authorization': `OAuth ${accessToken}`
       }
-    })
+    }).then(JSON.parse)
   }
 
   // games(params, callback) {
