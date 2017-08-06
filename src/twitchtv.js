@@ -20,7 +20,15 @@ export default class TwitchClient {
     return this;
   }
 
-  getParams(config) {
+  getHeaders(accessToken = null) {
+    return {
+      'Client-ID': this.clientId,
+      'Accept': 'application/vnd.twitchtv.v5+json',
+      'Authorization': accessToken ? `OAuth ${accessToken}` : undefined
+    }
+  }
+
+  getAuthParams(config) {
     return uniq(REQUIRED_FIELDS.concat(Object.keys(config)))
     .reduce((acc, field) => {
       if (config[field] || this[field])
@@ -31,7 +39,7 @@ export default class TwitchClient {
 
   getAuthUrl(config) {
     const uri = `${TWITCH_URL}/oauth2/authorize?${querystring.stringify({
-      ...this.getParams(config),
+      ...this.getAuthParams(config),
       response_type: 'code'
     })}`;
 
@@ -41,7 +49,7 @@ export default class TwitchClient {
 
   verify(config) {
     const uri = `${TWITCH_API_URL}/oauth2/token?${querystring.stringify({
-      ...this.getParams(config),
+      ...this.getAuthParams(config),
       response_type: 'code'
     })}`;
     // console.log({uri})
@@ -52,12 +60,16 @@ export default class TwitchClient {
     const uri = `${TWITCH_URL}/user`;
     return requestP.get({
       uri,
-      headers: {
-        'Client-ID': this.clientId,
-        'Accept': 'application/vnd.twitchtv.v5+json',
-        'Authorization': `OAuth ${accessToken}`
-      }
+      headers: this.getHeaders(accessToken)
     }).then(JSON.parse)
+  }
+
+  searchGame(query) {
+    const uri = `${TWITCH_API_URL}/search/games${querystring.stringify({ query })}`
+    return requestP.get({
+      uri,
+      headers: this.getHeaders(),
+    })
   }
 
   // games(params, callback) {
